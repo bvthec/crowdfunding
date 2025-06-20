@@ -1,0 +1,36 @@
+{{#if session}}
+    {{#if (equals session.user.typeId 1)}}
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/">Administra</a>
+        </li>
+    {{/if}}
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Conta</a>
+
+        <ul class="dropdown-menu">
+            {{!-- change this value if admin id change (good luck to remember that! kkkk) --}}
+            <li>
+                <a class="dropdown-item" href="/auth/status/">Informações</a>
+            </li>
+            {{#if (equals __id 1)}}
+                <li>
+                    <a class="dropdown-item" href="/auth/edit/?goto=/admin">Editar Informações</a>
+                </li>
+            {{else}}
+                <li>
+                    <a class="dropdown-item" href="/auth/edit/">Editar Informações</a>
+                </li>
+            {{/if}}
+            <li class="nav-item">
+                <a class="nav-link" href="/auth/logout">Logout</a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/myprojects/history/">Histórico</a>
+    </li>
+{{else}}
+    <li class="nav-item">
+        <a class="nav-link" href="/auth">Login</a>
+    </li>
+{{/if}}

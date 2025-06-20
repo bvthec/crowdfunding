@@ -1,0 +1,52 @@
+<nav class="flex-fill">
+    <ul class="nav nav-header justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link" href="/">Início</a>
+        </li>
+    {{#if session}}
+        {{#if (equals session.user.typeId 1)}}
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/">Administração</a>
+            </li>
+        {{/if}}
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Gerir</a>
+
+            <ul class="dropdown-menu">
+                <li>
+                    <a class="dropdown-item" href="/myprojects/">Meus Projectos</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="/card/">Cartões de Crédito</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="/bank/">Contas Bancárias</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Conta</a>
+
+            <ul class="dropdown-menu">
+                <li>
+                    <a class="dropdown-item" href="/auth/status/">Informações</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="/auth/edit/">Editar Informações</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="/myprojects/history/">Histórico</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/logout">Logout</a>
+                </li>
+            </ul>
+        </li>
+    {{else}}
+        <li class="nav-item">
+            <a class="nav-link" href="/auth">Login</a>
+        </li>
+    {{/if}}
+    </ul>
+</nav>

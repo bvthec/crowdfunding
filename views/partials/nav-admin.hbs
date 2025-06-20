@@ -1,0 +1,23 @@
+<nav class="flex-fill">
+    <ul class="nav nav-header justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link" href="/">Página Principal</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Conta</a>
+
+            <ul class="dropdown-menu">
+                {{!-- change this value if admin id change (good luck to remember that! kkkk) --}}
+                <li>
+                    <a class="dropdown-item" href="/auth/status/">Informações</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="/auth/edit/?goto=/admin">Editar Informações</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/logout">Logout</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>

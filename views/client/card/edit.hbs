@@ -1,0 +1,35 @@
+<h1 class="text-center p-4 mb-3">Adicionar Cartão</h1>
+
+<div class="mx-auto border border-2 p-3" style="max-width: 500px">
+{{#with card.dataValues}}
+    <form action="/card/edit/" method="post">
+        <input type="hidden" name="cardId" value="{{id}}">
+
+        <div class="mb-3">
+            <label class="form-label" for="cardNumber">Numero do Cartao</label><br>
+            <input class="form-control" type="Number" name="cardNumber" id="cardNumber" min="0" value="{{number}}" required>
+        </div>
+
+        <div class="input-group mb-3">
+                <label class="input-group-text" for="exp">Expires in:(MM/AAAA):</label><br>
+                <input class="form-control" type="text" name="exp" id="exp" maxlength="7" pattern="\d\d/(\d{4})" value="{{../expires}}" required>
+                <label class="input-group-text" for="cvc">CVC</label><br>
+                <input class="form-control" type="text" name="cvc" id="cvc" maxlength="3" size="3" pattern="\d{3}" value="{{cvc}}" required>
+        </div>
+
+        <div class="mb-2">
+            <label class="form-label" for="password">Palavra-Passe antiga:</label><br>
+            <input class="form-control" type="password" name="password" id="password">
+        </div>
+        <div class="mb-4">
+            <label class="form-label" for="password">Palavra-Passe nova:</label><br>
+            <input class="form-control" type="password" name="password" id="password">
+        </div>
+
+        <div class="text-end">
+            <input class="btn btn-outline-primary" type="submit" value="Editar">
+            <input class="btn btn-outline-primary" type="reset" value="Valores Padrão">
+        </div> 
+    </form>
+{{/with}}
+</div>

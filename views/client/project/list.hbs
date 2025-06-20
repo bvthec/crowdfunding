@@ -1,0 +1,26 @@
+{{> searchForm }}
+
+{{#unless projects}}
+    <h1 class="text-center">Nenhum Resultado</h1>
+{{else}}
+<ul class="nav list-group list-group-horizontal list-group-flush">
+
+    {{#each projects}}
+        {{#with this.dataValues }} 
+            <li class="list-group-item list-group-item-action" style="width: auto;">
+                <div class="card text-center shadow">
+                    <img src="{{../mediaFiles.cover}}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title" title="{{ title }}">{{ shortText name }}</h5>
+                        {{#if ../../goto}}
+                            <a href="{{../../goto}}{{id}}" class="btn btn-primary">Detalhes</a>
+                        {{else}}
+                         <a href="#" class="btn btn-primary">Detalhes</a>
+                        {{/if}}
+                    </div>
+                </div>
+            </li>
+        {{/with}}
+    {{/each}}
+{{/unless}}
+</ul>

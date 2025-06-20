@@ -1,0 +1,27 @@
+<h1 class="text-center p-4 mb-3">Editar Conta Bancária</h1>
+
+<div class="mx-auto border border-2 p-3 " style="max-width: 500px">
+    <form action="/bank/edit/" method="post">
+        <input type="hidden" name="bankId" value="{{ bank.id }}">
+    
+        <div class="mb-3">
+            <label class="form-label" for="bankName">Nome do Banco</label><br>
+            <input class="form-control" type="text" name="bankName" id="bankName" value="{{bank.bankName}}" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="iban">Número Internacional Bancário</label><br>
+            <div class="input-group">
+                <label class="input-group-text bi bi-bank" for="iban"></label>
+                <label class="input-group-text" for="iban">AO06</label>
+                <input class="form-control" type="text" name="iban" id="iban"
+                       pattern="\d{4}((\.|\s)?\d{4}){4}(\.|\s)?\d" value="{{bank.iban}}" required>
+            </div>
+        </div>
+
+        <div class="text-end">
+            <input class="btn btn-outline-primary" type="submit" value="Alterar">
+            <input class="btn btn-outline-primary" type="reset" value="Limpar Dados">
+        </div> 
+    </form>
+</div>r

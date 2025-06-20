@@ -1,0 +1,39 @@
+/* header */
+
+/* admin  project detail */
+#cover {
+    width: 500px;
+}
+
+#cover img {
+    width: 100%;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+#info ul {
+    list-style: none;
+    padding: 0px;
+}
+
+#project-pics ul {
+    list-style: none;
+}
+
+#projects-pics ul li {
+    display: inline;
+}
+
+#project-pics img{
+    width: 40%;
+    margin: 5px 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+#project-pics img:hover {
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* search bar */
+/* .search-bar {
+    position: inherit; 
+}*/

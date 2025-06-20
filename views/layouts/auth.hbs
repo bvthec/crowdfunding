@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/bootstrap-icons-1.13.1/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/static/css/login.css">
+    {{{ _sections.[style] }}}
+
+    {{#unless _sections.[page-title]}}
+        <title>Login</title>
+    {{else}}
+        {{{_sections.[page-title]}}}
+    {{/unless}}
+</head>
+<body>
+    <div class="login-panel shadow shadow-lg">
+        {{{ body }}}
+    </div>
+
+    {{#if alertMessage }}
+    <div class="modal" id="message" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center w-100">AVISO</h5>
+                </div>
+                <div class="modal-body">
+                    <p>{{alertMessage}}</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<script src="/static/js/main.js"></script>
+</body>
+</html>

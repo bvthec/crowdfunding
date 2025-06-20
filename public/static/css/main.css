@@ -1,0 +1,154 @@
+body {
+    background-color: rgb(192, 191, 191);
+}
+
+/* main page layout */
+#main-div {
+    /* background-color: rgb(199, 197, 197); */
+    padding: 0px;
+}
+
+#header {
+    color: white;
+    /* margin-bottom: 2px; */
+    /* min-height: 100px; */
+    background-color: rgb(58, 58, 231);
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.6);
+}   
+
+#header #header-title {
+    text-transform: uppercase;
+}
+
+#main-content {
+    min-height: 500px;
+    max-width: 900px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+#footer {
+    min-height: 125px;
+    color: white;
+    background-color: black;
+}
+
+/* nav menu */
+.nav.nav-center {
+    width: fit-content;
+    margin: auto;
+}
+
+.nav .list-group-item {
+    border: none;
+}
+
+.nav a {
+    text-decoration: none;
+}
+
+.nav .card {
+    width: 200px;
+    height: 260px;
+}
+
+.nav .card .card-body {
+    padding: 10px 6px;
+}
+
+.nav.menu .card {
+    width: 200px;
+    height: 180px;
+}
+
+.nav .card img {
+    height: 140px;
+}
+
+.nav .card.card-min img {
+    width: 60%;
+    margin: auto;
+}
+
+.nav-header a {
+    color: white;
+}
+
+.nav-header a:hover, .nav-header a:focus {
+    color: #fff;
+    text-decoration: underline;
+    background-color: #00000056;
+}
+
+/* card table */
+.card-table {
+    height: 400px;
+    overflow-y: scroll;
+}
+
+/* detail page formating */
+.project-bar {
+    background-color: #d4cfcf56;
+}
+
+.project-bar-btn {
+    color: white;
+    background-color: rgb(58, 58, 231);
+}
+
+.project-bar-btn:hover {
+    color: white;
+    text-decoration: underline;
+    background-color: rgb(72, 72, 231);
+}
+
+/* detail page */
+#detail-header #cover-container {
+    box-shadow: 0px 1px 10px #00000083;
+}
+
+/* #detail-header #cover-container:hover {
+    box-shadow: 0px 1px 20px #00000083;
+} */
+
+.small-info {
+    text-align: center;
+}
+
+.small-info h6 {
+    margin: 0px;
+    font-size: 10pt;
+    color: #838080
+}
+
+.small-info p {
+    font-weight: bold;
+    margin: 0px;
+}
+
+.litle-title {
+    margin-bottom: 8px;
+    box-shadow: 0px 1px 5px #00000056;
+}
+
+/* carrousel */
+/* Does not look good, take it out! */
+.carousel:hover .carousel-control-prev-icon, .carousel:hover .carousel-control-next-icon {
+    background-color: rgba(255, 255, 255, 0.288);
+    transition: .3s ease-out ease-in;
+}
+
+/* dropdowns */
+.dropdown-menu a {
+    color: black;
+}
+
+.dropdown-menu a:hover {
+    text-decoration: none;
+}
+
+.dropdown-menu li:hover {
+    background-color: #0000004f !important;
+}
+

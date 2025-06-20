@@ -1,0 +1,8 @@
+# folder
+node_modules/
+demo/
+doc/
+public/media/
+
+#files
+.env*

@@ -1,0 +1,96 @@
+<div class="container-fluid m-0 p-3">
+
+    <div class="row mb-3" id="detail-header">
+        <div class="col-6 p-2" id="cover-container">
+            <img class="border border-1 img-fluid" src="{{mediaFiles.cover}}">
+        </div>
+
+        <div class="col p-3">
+            <h2 class="fs-1">{{ project.name }}</h2>
+            <p class="fs-6">
+                <b>de</b>:<i> {{ project.user.dataValues.name }}</i>
+            </p>
+            {{#if belongsToUser}}
+                <p class="fs-6">
+                    <b>Estado</b>:<i> {{ translate project.projectState.dataValues.name }}</i>
+                </p>
+            {{/if}}
+        </div>
+    </div>
+
+    <div class="container-fluid row rounded-5 shadow p-3" id="project-info">
+        <div class="col small-info">
+            <h6 class="col">Limite de Financiamento</h6>
+            <p>{{ onlyDate project.dateLimit}}</p>
+        </div>
+        <div class="col small-info border-start border-end border-dark-subtle">
+            <h6 class="col">Financiamento</h6>
+            <p>{{ formatCurrency project.requiredFund }}</p>
+        </div>
+        <div class="col small-info border-end border-dark-subtle">
+            <h6 class="col">Financiamento Arrecadado</h6>
+            <p>{{ formatCurrency project.currentFund }}</p>
+        </div>
+        <div class="col small-info">
+            <h6 class="col">Taxa de Conclusão</h6>
+            <p>{{ percentage }}%</p>
+        </div>
+    </div>
+
+    <div class="container-sm text-center my-4">
+        {{#unless belongsToUser}}
+            <a class="btn btn-primary px-4 py-3 rounded-4" href="/fund-project/{{ project.id }}">Financiar Projecto</a>
+        {{/unless}}
+    </div>
+
+    {{#section 'extra-script'}}
+    <script>
+        const pictures = document.querySelector('#project-pictures');
+        const carousel = new bootstrap.Carousel(pictures, {
+            interval: 3000,
+            touch: true,
+        });
+    </script>
+    {{/section}}
+
+    {{!-- PROJECT IMAGES --}}
+    <div id="project-pictures" class="carousel slide mb-4 border">
+        <div class="carousel-indicators">
+            {{#each mediaFiles.pics}}
+                <button type="button" data-bs-target="#project-pictures" data-bs-slide-to="{{@index}}" {{#if @first}}class="active" {{/if}} aria-current="true" aria-label="Slide {{@index}}"></button>
+            {{/each}}
+        </div>
+
+        <div class="carousel-inner">
+            {{#each mediaFiles.pics }}
+                <div class="carousel-item {{#if @first}} active {{/if}}">
+                    <img src="{{this}}" class="d-block w-100">
+                </div>
+            {{/each}}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#project-pictures" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#project-pictures" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div class="container-fluid">
+        <h2 class="rounded-3 p-3 litle-title">SOBRE O PROJECTO</h2>
+        <div class="conteiner-fluid px-4">
+            <p>{{ project.description }}</p>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <h2 class="rounded-3 p-3 litle-title">EXTRA</h2>
+        <div class="conteiner-fluid px-4">
+            <p><b>Submetido em</b>: {{ onlyDate project.created }}</p>
+            <p><b>Email</b>: <a href="mail:{{ project.user.dataValues.email }}">{{ project.user.dataValues.email }}</a></p>
+        </div>
+    </div>
+</div>
+

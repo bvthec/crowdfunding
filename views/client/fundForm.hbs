@@ -1,0 +1,48 @@
+{{#section 'header'}}
+<style>
+    #project-info p {
+        margin-bottom: 0px;
+    }
+
+    #main-content {
+        padding: 40px !important;
+    }
+</style>
+{{/section}}
+
+<div class="mx-auto border border-2 p-3 " style="max-width: 500px">
+    <h3 class="text-center mt-4 mb-5">FINANCIAR PROJECTO</h3>
+
+    <div id="project-info" class="container-fluid p-0 my-3">
+        <p><b>Nome do projecto</b>: {{project.dataValues.name}}</p>
+        <p><b>Criado por</b>: <i>{{project.dataValues.user.dataValues.name}}</i></p>
+        <p><b>Financiamento necessário</b>: {{ formatCurrency project.dataValues.requiredFund}}</p>
+        <p><b>Financiamento arrecadado</b>: {{ formatCurrency project.dataValues.currentFund}}</p>
+    </div>
+
+
+    <form action="/fund-project/" method="post">
+        <input type="hidden" name="projectId" value="{{project.dataValues.id}}">
+
+        <div class="mb-3">
+            <label class="form-label" for="cardId">Seleciona o numero do cartao a usar:</label><br>
+            <select class="form-select" name="cardId" id="cardId">
+                {{#each user.dataValues.userCards}}
+                    <option value="{{this.dataValues.id}}">{{this.dataValues.number}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <label class="form-label" for="fund">Financiar com:</label><br>
+        <div class="input-group mb-4">
+            <label class="input-group-text" for="fund">AOA</label><br>
+            <input class="form-control" type="number" name="fund" min="1" step="any" id="fund">
+        </div>
+
+        <div style="text-align: right;">
+                <input class="btn btn-outline-primary" type="submit" value="Confirmar">
+                <input class="btn btn-outline-secondary" type="reset" value="Limpar Dados">
+                <a class="btn btn-outline-danger" href="/details/{{project.dataValues.id}}">Cancelar</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,31 @@
+{{#section 'page-title'}}
+    <title>Iniciar Sessão</title>
+{{/section}}
+
+<div class="container-fluid row m-auto p-3 align-items-center">
+    <div class="col-4 text-center p-1 mb-2">    
+        <span class="bi bi-person" style="font-size: 70pt;"></span>
+        <h1>Autenticar</h1>
+    </div>
+
+    <div class="col">
+        <form action="/auth" method="post">
+            {{#if goto}}
+                <input type="hidden" name="goto" value="{{goto}}"/>
+            {{/if}}
+            <div class="form-floating mb-3 mt-2">
+                <input class="form-control" type="email" name="email" id="email" placeholder="exemplo@email.com">
+                <label for="email">Email</label>
+            </div>
+        
+            <div class="mb-3 form-floating">
+                <input class="form-control" type="password" name="password" id="password" placeholder="Sua palavra-passe">
+                <label for="password">Palavra-Passe</label>
+            </div>
+            <div class="d-grid gap-2">
+                <input class="btn btn-outline-primary" type="submit" value="Entrar">
+                <a class="btn btn-outline-primary" href="/auth/create">Criar Conta</a>
+            </div>
+        </form>
+    </div>
+</div>

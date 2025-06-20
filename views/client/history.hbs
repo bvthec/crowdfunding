@@ -1,0 +1,34 @@
+<h1 class="p-3 mb-3 text-center">Historico de financiamento</h1>
+
+<div class="container-fluid table-responsible border border-2 p-0 card-table">
+    <table class="table table-striped text-center">
+        <thead>
+            <tr>
+                <th>Índice</th>
+                <th>Nome do Projecto</th>
+                <th>Financiamento</th>
+                <th>Número do Cartão</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+        {{#unless history}}
+            <tr>
+                <td colspan="5">[Sem Histórico]</td>
+            </tr>
+        {{else}}
+            {{#each history}}
+                {{#with this.dataValues}}
+                    <tr class="align-middle">
+                        <td>{{ @index }}</td>
+                        <td title="{{project.dataValues.name}}">{{ shortText project.dataValues.name }}</td>
+                        <td>{{ formatCurrency fundAmount }}</td>
+                        <td>{{ userCard.dataValues.number }}</td>
+                        <td>{{ onlyDate createdAt }}</tr>
+                    </tr>
+                {{/with}}
+            {{/each}}
+        {{/unless}}
+        </tbody>
+    </table>
+</div>

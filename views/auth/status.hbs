@@ -1,0 +1,54 @@
+{{#section 'page-title'}}
+    <title>Estado da Sessão</title>
+{{/section}}
+
+<div class="container-fluid row m-auto p-3 align-items-center">
+    <div class="col-5 text-center p-1 mb-2">
+        <span class="bi bi-person" style="font-size: 70pt;"></span>
+        <h1>Informações</h1>
+        
+        <div class="container-fluid">
+            {{#if (equals __id 1)}}
+                <a class="btn btn-outline-primary" href="/admin">Voltar ao Painel Administrativo</a>
+            {{else}}
+                <a class="btn btn-outline-primary" href="/">Voltar ao Início</a>
+            {{/if}}
+        </div>
+    </div>
+
+    <div class="col">
+    {{#unless user}}
+        <div class="text-center">
+            <h2>[Sessão não iniciada]</h2>
+            <a class="btn btn-outline-primary" href="/auth">Iniciar Sessão?</a>
+        </div>
+    {{else}}
+        {{#with user.dataValues}}
+            <div class="container-fluid mini-info">
+                <h3>ID</h3>
+                <p>{{ id }}</p>
+            </div>
+
+            <div class="container-fluid mini-info">
+                <h3>Nome</h3>
+                <p>{{ name }}</p>
+            </div>
+
+            <div class="container-fluid mini-info">
+                <h3>Email</h3>
+                <p>{{ email }}</p>
+            </div>
+
+            <div class="container-fluid mini-info">
+                <h3>Tipo</h3>
+                <p>{{ userType.dataValues.name }}</p>
+            </div>
+
+            <div class="container-fluid mini-info">
+                <h3>Data de Nascimento</h3>
+                <p>{{ onlyDate birthDate }}</p>
+            </div>
+        {{/with}}
+    {{/unless}}
+    </div>
+</div>

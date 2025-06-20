@@ -1,0 +1,66 @@
+<h1 class="text-center">Adicionar novo projecto</h1>
+
+<form class="mx-auto p-5" action="/myprojects/add" method="post" enctype="multipart/form-data">
+
+    <div class="mb-3">
+        <label class="form-label" for="pname">Nome do Projecto</label><br>
+        <input class="form-control" type="text" name="project-name" id="pname" minlength="5" required>
+    </div>
+
+    <div class="row mb-3">
+        <div class="input-group col">
+            <label class="input-group-text"  for="fund">Quantia:</label><br>
+            <input class="form-control" type="number" name="required-fund" id="fund" min="1" step="any" required>
+            <span class="input-group-text">Kz</span>
+        </div>
+        <div class="input-group col">
+            <label class="input-group-text" for="ldate">Data Termino</label><br>
+            <input class="form-control" type="date" name="date-limit" min="{{minDate}}" id="ldate" required>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="account">Selecionar conta para deposito:</label>
+        <select class="form-select" name="account-id" id="account" required>
+            {{#each banks}}
+                <option value="{{dataValues.id}}">{{dataValues.bankName}}</option>
+            {{/each}}
+        </select>
+    </div>
+
+
+    <div class="mb-3">
+        <h3>Fotos do projecto</h3>
+
+        <div class="input-group mb-1">
+            <input class="form-control" type="file" name="f0" id="formCover" required>
+            <label for="formCover" class="input-group-text">Capa</label>
+        </div>
+        <div class="input-group mb-1">
+            <input class="form-control" type="file" name="f1" id="f1" required>
+            <label class="input-group-text" for="f1">1º Foto</label>
+        </div>
+        <div class="input-group mb-1">
+            <input class="form-control" type="file" name="f2" id="f2" required>
+            <label class="input-group-text" for="f2">2º Foto</label>
+        </div>
+        <div class="input-group mb-1">
+            <input class="form-control" type="file" name="f3" id="f3" required>
+            <label class="input-group-text" for="f3">3º Foto</label>
+        </div>
+        <div class="input-group mb-1">
+            <input class="form-control" type="file" name="f4" id="f4" required>
+            <label class="input-group-text" for="f4">4º Foto</label>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <h3 for="desc">Descrição do Projecto:</h3>
+        <textarea class="form-control" name="description" id="desc" rows="14" placeholder="Fale sobre o projecto aqui..." minlength="10" required></textarea>
+    </div>
+
+    <div class="text-end">
+        <input class="btn btn-outline-primary" type="submit" value="Adicionar">
+        <input class="btn btn-outline-primary" type="reset" value="Limpar Formulario">
+    </div>
+</form>

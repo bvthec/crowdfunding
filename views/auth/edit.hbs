@@ -1,0 +1,74 @@
+{{#section 'page-title'}}
+    <title>Criar Conta</title>
+{{/section}}
+
+{{#section 'style'}}
+<style>
+    .login-panel {
+        margin-top: 20px;
+        padding: 0px;
+        border-radius: 10px;
+    }
+</style>
+{{/section}}
+
+<div class="container-fluid m-auto px-3 pb-4">
+    <div class="text-center p-1 mb-2">    
+        <span class="bi bi-person" style="font-size: 40pt;"></span>
+        <h1>Editar Informações</h1>
+    </div>
+
+    <div>
+        <form action="/auth/edit" method="post">
+            {{#if goto}}
+                <input type="hidden" name="goto" value="{{goto}}">
+            {{/if}}
+
+            <div class="form-floating mb-3 mt-2">
+                <input class="form-control" type="text" name="name" id="name" placeholder="Nome Completo" value="{{ user.name }}">
+                <label for="name">Nome Completo</label>
+            </div>
+
+            <div class="form-floating mb-3 mt-2">
+                <input class="form-control" type="text" name="bi" id="bi" placeholder="Bilhete de Identidade" value="{{ user.bi }}" pattern="\d{9}[a-zA-Z]{2}\d{3}">
+                <label for="bi">Bilhete de Identidade</label>
+            </div>
+
+            <div class="row mb-3 mt-2">
+                <div class="input-group col">
+                    <span class="input-group-text bi bi-envelope-at"></span>
+                    <div class="form-floating">
+                        <input class="form-control" type="email" name="email" id="email" placeholder="exemplo@email.com" value="{{ user.email }}">
+                        <label for="email">Email</label>
+                    </div>
+                </div>
+                
+                <div class="col-4 form-floating">
+                    <input class="form-control" type="date" name="birth" id="birth" placeholder="Data" value="{{ user.birthDate }}">
+                    <label for="birth">Nascido em:</label>
+                </div>
+            </div>
+
+            <div class="form-floating mb-3 mt-2">
+                <input class="form-control" type="address" name="address" id="address" placeholder="Endereço" value="{{ user.address }}">
+                <label for="address">Endereço</label>
+            </div>
+        
+            <div class="mb-3 form-floating">
+                <input class="form-control" type="password" name="password" id="password" placeholder="palavra-passe antiga">
+                <label for="password">Palavra-Passe Actual</label>
+            </div>
+
+            <div class="mb-3 form-floating">
+                <input class="form-control" type="password" name="password2" id="password2" placeholder="palavra-passe nova">
+                <label for="password2">Palavra-Passe Nova</label>
+            </div>
+
+            <div class="d-grid gap-2">
+                <input class="btn btn-outline-primary" type="submit" value="Salvar Alterações">
+                <input class="btn btn-outline-primary" type="reset" value="Limpar Alterações">
+                <a class="btn btn-outline-danger" href="/">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="d-flex justify-content-center my-3">
+    <div style="width: 600px;">
+        <form class="input-group" action="{{searchForm.goto}}" method="GET">
+            <select class="form-select text-center" name="stateId" id="state">
+                <option value="">Todos</option>
+                {{#each searchForm.states}}
+                        <option value="{{this.dataValues.id}}" {{#if (equals ../searchForm.selectedStateId this.dataValues.id)}} selected {{/if}}>
+                            {{translate this.dataValues.name}}
+                        </option>
+                {{/each}}
+            </select>
+
+            <input class="form-control w-50" type="search" name="projectName" id="project-name" placeholder="Nome do Projecto" value="{{searchForm.projectName}}"/>
+            <input class="btn btn-outline-secondary" type="submit" value="Pesquisar">
+        </form>
+    </div>
+</div>
