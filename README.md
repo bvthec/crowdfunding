@@ -1,52 +1,44 @@
-Requisitos do Sistema
+## Dependecies
 
 - nodejs
 - MySQL
-- npm
 
-COMO EXECUTAR O PROJECTO
+## Setup
 
-1. No directorio do projecto executar:
+1. In the project directory, run the following command to install the required packages:
 
     ```
         npm install
     ```
-Para instalar todos os módulos necessários para executar o sistema
 
-2. Iniciar o servidor MySQL
+2. Start MySQL server and configure the credentials in the **.env** file.
+   Use the **.env.example** file as example.
 
-3. Cria uma base da dados no servidor com o nome "funding"
+3. In MySQL, create a database called 'funding', no table is required. You can change the database name
+   in **.env** file.
     
-   O sistema pressupõe que existe um usuário com nome "root" e
-   sem palavra-passe. Se não for o caso os parametros podem ser
-   alterado no ficheiro src/lib/settings.js no objecto database.
-
-4. Após criar a base de dados "funding" executar o seguinte comando:
-   no directório do projecto:
-
-   ```
-        node scripts/init_db.js
+4. Execute the following command to init the database with some default data, such as admin account:
+    
+    ```
+        node ./scripts/init_db.js
     ```
 
-    para inicializar a base de dados.
+## Start The Application
 
-5. por fim executar o seguinte comando para inicializar o servidor:
-
+1. To run the application, start the server with the following command:
+    
     ```
-        node src/app.js
+        node ./src/app.js
     ```
 
-    e esperar a mensagem de que o servidor está online.
+    The server should run at: http://localhost:3000.
 
-6. Em fim para usar o sistema basta usar o navegador e escrever
 
-    http://localhost:1212/
+## Admin Panel
 
-    Para aceder a administração do sistema usar a seguinte URL:
+You can access the admin panel at: http://localhost:3000/admin/.
+    
+Admin default crendetials are:
 
-    http://localhost:1212/admin
-
-    As credênciais do administrador são as seguintes:
-
-    Email: 'admin@admin.com' <br>
-    Palavra-passe: '1234'<br>
+- Email: 'admin@admin.com'
+- Password: '1234'

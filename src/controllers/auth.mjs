@@ -1,7 +1,7 @@
 'use strict';
 import { Op } from 'sequelize';
 
-import models from '../models/models.mjs';
+import models from '../models.mjs';
 import session from '../lib/session.mjs';
 import { hash, compareHash } from '../lib/security.mjs';
 import { SESSION_DURATION } from '../lib/settings.mjs';

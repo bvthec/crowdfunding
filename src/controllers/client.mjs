@@ -1,5 +1,5 @@
 'use strict';
-import models from '../models/models.mjs';
+import models from '../models.mjs';
 import { searchFormHandler2, attachFiles } from '../lib/utils.mjs';
 
 // projects visualizations & Funding

@@ -1,5 +1,5 @@
 'use strict';
-import models from '../models/models.mjs';
+import models from '../models.mjs';
 import { hash, compareHash } from '../lib/security.mjs';
 
 async function index(req, res) {

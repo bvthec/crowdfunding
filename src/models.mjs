@@ -1,6 +1,8 @@
 'use strict';
 import { Sequelize, DataTypes } from 'sequelize';
 
+console.log(process.env.DATABASE_ENGINE);
+
 export const sequelize = new Sequelize(
     process.env.DATABASE_NAME,
     process.env.DATABASE_USER,
@@ -19,7 +21,7 @@ export async function initDatabase() {
 
     console.log('Syncing with the database...')
     await sequelize.sync({alter: true});
-
+    console.log('Synced with the database.');
 }
 
 export const UserType = sequelize.define(
@@ -250,7 +252,7 @@ export const History = sequelize.define(
     }
 )
 
-// relations
+// relationships
 UserType.hasMany(User, {
     foreignKey: {
         allowNull: false,

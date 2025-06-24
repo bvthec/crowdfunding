@@ -1,6 +1,6 @@
 'use strict';
 import jwt from 'jsonwebtoken';
-import { UserType } from '../models/models.mjs';
+import { UserType } from '../models.mjs';
 import { setMessage } from './utils.mjs';
 
 const jwtOptions = {

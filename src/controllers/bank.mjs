@@ -1,5 +1,5 @@
 'use strict';
-import models from '../models/models.mjs';
+import models from '../models.mjs';
 
 async function index(req, res) {
     const banks = await models.BankAccount.findAll({

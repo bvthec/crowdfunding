@@ -1,7 +1,7 @@
 'use strict';
 import { Op } from 'sequelize';
 
-import models from '../models/models.mjs';
+import models from '../models.mjs';
 import { attachFiles, searchFormHandler } from '../lib/utils.mjs';
 
 

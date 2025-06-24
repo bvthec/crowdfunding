@@ -3,7 +3,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { Op } from 'sequelize';
 
-import models from '../models/models.mjs';
+import models from '../models.mjs';
 import { MEDIA_PATH } from './settings.mjs';
 
 export async function attachFiles(project) {

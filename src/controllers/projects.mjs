@@ -4,7 +4,7 @@ import path from 'path';
 import multiparty from 'multiparty';
 
 import { MEDIA_PATH } from '../lib/settings.mjs';
-import models from '../models/models.mjs';
+import models from '../models.mjs';
 import { searchFormHandler, attachFiles } from '../lib/utils.mjs';
 
 async function createProjectFolder() {
