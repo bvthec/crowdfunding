@@ -86,7 +86,7 @@ async function edit(req, res) {
     if (currentPassword && newPassword) {
         let r = await compareHash(currentPassword, card.password);
         if (!r) {
-            res.cookie('__alert', 'As palavras-passe não combinam.');
+            setMessage(res, 'As palavras-passe não combinam.');
             res.redirect(303, req.originalUrl);
             return;
         } else {

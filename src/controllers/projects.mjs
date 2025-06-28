@@ -81,7 +81,7 @@ async function addPage(req, res) {
     });
 
     if (user.bankAccounts.length == 0) {
-        res.cookie('__alert', 'É necessário ter uma conta bancária para continuar.');
+        setMessage(res, 'É necessário ter uma conta bancária para continuar.');
         res.redirect(req.baseUrl);
         return;
     }
@@ -148,7 +148,7 @@ function add(req, res) {
         projectInfo.created = new Date();
 
         await projectInfo.save();
-        res.cookie('__alert', 'Projecto foi Adicionado com sucesso!');
+        setMessage(res, 'Projecto Criado com sucesso!');
 
         res.redirect(303, '/myprojects/');
     });
@@ -254,7 +254,7 @@ function edit(req, res) {
         projectInfo.requiredFund = fields['required-fund'][0];
 
         await projectInfo.save();
-        res.cookie('__alert', 'Alterações salvas com sucesso!');
+        setMessage(res, 'Alterações salvas com sucesso!');
         res.redirect(303, req.baseUrl);
     });
 }
@@ -298,7 +298,7 @@ async function deleteProject(req, res) {
         );
 
         await result.destroy();
-        res.cookie('__alert', 'O projecto foi removido!');
+        setMessage(res, 'O projecto foi removido!');
 
         res.redirect(303, req.baseUrl);
     })

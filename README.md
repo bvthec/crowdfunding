@@ -40,5 +40,5 @@ You can access the admin panel at: http://localhost:3000/admin/.
     
 Admin default crendetials are:
 
-- Email: 'admin@admin.com'
-- Password: '1234'
+- Email: admin@admin.com
+- Password: 1234

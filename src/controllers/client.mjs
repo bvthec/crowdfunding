@@ -1,6 +1,6 @@
 'use strict';
 import models from '../models.mjs';
-import { searchFormHandler2, attachFiles } from '../lib/utils.mjs';
+import { searchFormHandler2, attachFiles, setMessage } from '../lib/utils.mjs';
 
 // projects visualizations & Funding
 async function mainMenu(req, res) {
@@ -110,7 +110,7 @@ async function fundProjectForm(req, res) {
     });
 
     if (user.userCards.length == 0) {
-        res.cookie('__alert', 'É necessário ter cartão de crédito para continuar.');
+        setMessage(res, 'É necessário ter cartão de crédito para continuar.');
         res.redirect(req.baseUrl + '/details/' + projectId);
         return;
     }
@@ -142,7 +142,6 @@ async function fundProject(req, res) {
     const projectId = Number.parseInt(req.body.projectId);
 
     if (projectId == NaN) {
-        console.log('FUND: Invalid project id: ' + req.body.projectId);
         res.redirect(303, '/');
         return;
     }
@@ -155,7 +154,6 @@ async function fundProject(req, res) {
     });
 
     if (!project) {
-        console.log('FUND: could not find project with id ' + projectId);
         res.redirect(303, '/');
         return;
     }
