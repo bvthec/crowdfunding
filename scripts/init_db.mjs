@@ -1,6 +1,7 @@
 'use strict';
-import models from '../src/models/models.mjs';
-import { hash }  from '../src/lib/security';
+import 'dotenv/config';
+import models from '../src/models.mjs';
+import { hash }  from '../src/lib/security.mjs';
 
 const userTypes = ['admin', 'client'];
 const projectStates = ['pending', 'approved', 'rejected', 'funded'];
@@ -141,6 +142,8 @@ async function main() {
     addUserType().then((r) => {
         addAdmin();
         // addUsers();
+
+        console.log('Done!');
     });
 }
 
