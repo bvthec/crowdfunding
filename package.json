@@ -15,8 +15,8 @@
     "express": "^5.1.0",
     "express-handlebars": "^8.0.3",
     "jsonwebtoken": "^9.0.2",
+    "mariadb": "^3.4.5",
     "multiparty": "^4.2.3",
-    "mysql2": "^3.14.1",
     "sequelize": "^6.37.7"
   }
 }

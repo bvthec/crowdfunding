@@ -1,20 +1,23 @@
-## Dependecies
+# WARNING
+Project is not secure!
 
-- nodejs
-- MySQL
+## Instalation Requirements
+
+- node
+- npm
 
 ## Setup
 
-1. In the project directory, run the following command to install the required packages:
+1. In the project directory, run the following command to install all the dependecies:
 
     ```
         npm install
     ```
 
-2. Start MySQL server and configure the credentials in the **.env** file.
+2. Start mariaDB server and configure the credentials in the **.env** file.
    Use the **.env.example** file as example.
 
-3. In MySQL, create a database called 'funding', no table is required. You can change the database name
+3. In mariaDB, create a database called 'funding', no table is required. You can change the database name
    in **.env** file.
     
 4. Execute the following command to init the database with some default data, such as admin account:
@@ -32,7 +35,6 @@
     ```
 
     The server should run at: http://localhost:3000.
-
 
 ## Admin Panel
 

@@ -1,26 +1,6 @@
 'use strict';
-import { Sequelize, DataTypes } from 'sequelize';
-
-export const sequelize = new Sequelize(
-    process.env.DATABASE_NAME,
-    process.env.DATABASE_USER,
-    process.env.DATABASE_PASSWORD,
-    {
-        host: process.env.DATABASE_HOST,
-        dialect: process.env.DATABASE_ENGINE,
-        logging: false,
-    }
-);
-
-export async function initDatabase() {
-    console.log('Connecting to the database...');
-    await sequelize.authenticate();
-    console.log('Connection to the database was sucessfully established');
-
-    console.log('Syncing with the database...')
-    await sequelize.sync({alter: true});
-    console.log('Synced with the database.');
-}
+import { DataTypes } from 'sequelize';
+import { sequelize } from './db.mjs';
 
 export const UserType = sequelize.define(
     'userType',
@@ -307,8 +287,6 @@ History.belongsTo(Project, {
 });
 
 export default {
-    initDatabase,
-    sequelize,
     UserType,
     User,
     BankAccount,
