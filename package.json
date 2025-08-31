@@ -4,6 +4,7 @@
   "description": "A crowdfunding plataform",
   "main": "app.js",
   "scripts": {
+    "server": "node ./src/server.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -17,6 +18,7 @@
     "jsonwebtoken": "^9.0.2",
     "mariadb": "^3.4.5",
     "multiparty": "^4.2.3",
+    "mysql2": "^3.14.3",
     "sequelize": "^6.37.7"
   }
 }
