@@ -1,5 +1,6 @@
 'use strict';
 import 'dotenv/config';
+import db from '../src/db.mjs';
 import models from '../src/models.mjs';
 import { hash }  from '../src/lib/security.mjs';
 
@@ -66,7 +67,7 @@ async function addAdmin() {
     });
     
     if (result) {
-        log('there is already an admin...');
+        console.log('there is already an admin');
         return;
     }
     
@@ -79,23 +80,21 @@ async function addAdmin() {
     user.email = adminInfo.email;
     user.password = await hash(adminInfo.password);
     user.userTypeId = adminType.id;
-    user.save();
+
+    await user.save();
 }
 
-function addProjectStates() {
+async function addProjectStates() {
     console.log('Adding project states...');
 
-    models.ProjectState.findAll().then(
-        (result) => {
-            if (result.length != 0) {
-                console.log('There is already defined states...');
-                return;
-            }
+    let r = await models.ProjectState.findAll();
+    if (r.length !== 0) {
+        console.log('There is already defined states.');
+        return;
+    }
 
-            for (let state of projectStates)
-                models.ProjectState.create({name: state});
-        }
-    )
+    for (let state of projectStates)
+        await models.ProjectState.create({name: state});
 }
 
 function genIBAN() {
@@ -123,28 +122,23 @@ async function addUsers() {
         const user = models.User.build(data);
         user.userTypeId = clientType.id;
         user.password   = await hash(user.password);
-        user.save().then(
-            (user) => {
-                models.BankAccount.create({
-                    bankName: 'Banco de Konoha',
-                    iban: genIBAN(),
-                    userId: user.id
-                });
-            }
-        );
+        await user.save()
+        await models.BankAccount.create({
+            bankName: 'Banco de Konoha',
+            iban: genIBAN(),
+            userId: user.id
+        });
     }
 }
 
-async function main() {
-    await models.initDatabase();
-    
-    addProjectStates();
-    addUserType().then((r) => {
-        addAdmin();
-        // addUsers();
-
-        console.log('Done!');
-    });
-}
-
 main();
+async function main() {
+    await db.init();   
+    await addProjectStates();
+    await addUserType();
+    await addAdmin();
+    await addUsers();
+
+    console.log('Done!');
+    process.exit(0);
+}

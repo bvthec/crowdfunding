@@ -98,7 +98,7 @@ function add(req, res) {
     const form = new multiparty.Form();
 
     form.parse(req, async (err, fields, files) => {
-        console.log('fields: ', fields);
+        // console.log('fields: ', fields);
         // console.log('files: ', files);
         const folder = await createProjectFolder();
 
@@ -116,18 +116,28 @@ function add(req, res) {
             let oldPath = file[0].path;
             let newPath = path.join(MEDIA_PATH, folder, 'pic' + counter + extname);
 
-            console.log(`Moving ${oldPath} -> ${newPath}`);
-            fs.rename(oldPath, newPath).then(
-                undefined,
-                (err) => {
-                    console.log(err);
-                    throw err;
-                }
-            );
+            // move is not working on manjaro.
+            // When used ubunto some time move the file crash the server.
+            // So now we are just copying the file.
+            console.log(`Copying ${oldPath} -> ${newPath}`);
+
+            try {
+                await fs.copyFile(oldPath, newPath);
+            } catch (e) {
+                console.log(e);
+                process.exit(1);
+            }
+
+            // file was copyed. Now lets delete de temp file?
+            try {
+                fs.rm(oldPath, {force: true});
+            } catch (e) {
+                console.log('An error happend when deleting temp file.');
+                console.log(e);
+            }
         }
 
         // set the state of the project
-        // change to pending later
         const state = await models.ProjectState.findOne({
             where: { name: 'pending' }
         });

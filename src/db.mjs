@@ -13,13 +13,13 @@ export const sequelize = new Sequelize(
 );
 
 export async function init() {
-    console.log('Connecting to the database...');
+    console.log('Connecting and syncing with the database...');
     await sequelize.authenticate();
     await sequelize.sync({alter: true});
-    console.log('Connection succeded.');
+    console.log('Connected and synced.');
 }
 
 export default {
-    initDatabase,
+    init,
     sequelize,
 }
