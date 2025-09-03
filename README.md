@@ -3,8 +3,8 @@ Project is not secure!
 
 ## Instalation Requirements
 
-- node
-- npm
+- node >= v24.7.0 (not tested with previous versions)
+- npm  >= 11.5.2
 
 ## Setup
 
@@ -20,18 +20,20 @@ Project is not secure!
 3. In mariaDB, create a database called 'funding', no table is required. You can change the database name
    in **.env** file.
     
-4. Execute the following command to init the database with some default data, such as admin account:
-    
-    ```
-        node ./scripts/init_db.js
-    ```
 
 ## Start The Application
 
-1. To run the application, start the server with the following command:
+1. Execute the following command if you are running the project for the first time. It will init the database with some default data:
     
     ```
-        node ./src/app.js
+        node ./scripts/init_db.mjs
+    ```
+
+
+2. To run the application, start the server with the following command:
+    
+    ```
+        node ./src/server.mjs
     ```
 
     The server should run at: http://localhost:3000.
